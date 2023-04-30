@@ -1,0 +1,4 @@
+deezer
+electron13-bin
+google-chrome
+jetbrains-toolbox
