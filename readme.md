@@ -9,3 +9,8 @@
 | install saves packages |     sudo pacman -S $(< pkglist.txt)     |
 |   convert/merge pdf    | pdfunite file1.pdf file2.pdf merged.pdf |
 
+## Keyboard shortcuts
+
+|     action     |         shortcut         |
+|:--------------:|:------------------------:|
+| change desktop | ctrl + alt + right arrow |
