@@ -1,0 +1,39 @@
+#cat /etc/systemd/system/network-restart.service
+#systemctl enable network-restart.service
+#systemctl start network-restart.service
+#systemctl stop network-restart.service
+#systemctl disable network-restart.service
+#systemctl status network-restart.service
+#systemctl daemon-reload
+
+[Unit]
+Description=Network Suspend/Resume Service
+Before=sleep.target
+StopWhenUnneeded=yes
+
+[Service]
+User=root
+Type=oneshot
+RemainAfterExit=yes
+ExecStartPre=-/usr/bin/sudo -u $USER /bin/bash -lc 'nmcli networkig off'
+ExecStart=/usr/bin/sleep 1
+ExecStart=-/usr/bin/systemctl stop NetwokkManager
+ExecStart=/usr/bin/sleep 1
+ExecStart=-/usr/bin/env bash -c'DEVICE=$(hwinfo --wlan | grep "Device File" | cut -d " " -f5) && ip link set $DEVICE down'
+ExecStart=/usr/bin/sleep 1
+ExecStart=-/usr/bin/modprobe -r rtw_8821ce
+ExecStop=/usr/bin/sleep 3
+ExecStop=-/usr/bin/modprob rtw_8821ce
+ExecStop=/usr/bin/sleep 2
+ExecStop=-/usr/bin/env bash -c 'DEVICE=$(hwinfo --wlan | grep "Device File" | cut -d " " -f5) && ip link set $DEVICE up'
+ExecStop=/usr/bin/sleep 2
+ExecStop=-/usr/bin/systemctl start NetworkManager
+ExecStop=/usr/bin/sleep 2
+ExecStop=-/usr/bin/sudo -u $USER /bin/bash -lc 'nmcli networking on'
+ExecStop=/usr/bin/sleep 1
+ExecStop=-/usr/bin/sudo -u $USER /bin/bash -lc 'nmcli r wifi off'
+ExecStop=/usr/bin/sleep 1
+ExecStop=-/usr/bin/sudo -u $USER /bin/bash -lc 'nmcli r wifi on'
+
+[Install]
+WantedBy=sleep.target
