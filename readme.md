@@ -18,6 +18,4 @@
 
 ## Keyboard shortcuts
 
-|     action     |         shortcut         |
-|:--------------:|:------------------------:|
-| change desktop | ctrl + alt + right arrow |
+Super and type Keyboard
