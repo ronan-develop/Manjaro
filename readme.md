@@ -1,5 +1,10 @@
 # Manjaro
 
+## scripts
+
+### Prevent frozen or blocked network
+[wifi and network disabled after waking up computer](./scripts/network-restart.service)
+
 ## Commands
 
 |           Action            |                                               Command                                                |
