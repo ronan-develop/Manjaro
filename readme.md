@@ -15,7 +15,11 @@
 |          merge pdf          |                               pdfunite file1.pdf file2.pdf merged.pdf                                |
 | compress pdf (ghost script) | gs -sDEVICE=pdfwrite -dPDFSETTINGS=/ebook   -dNOPAUSE -dBATCH -sOutputFile=output.pdf Image-0001.pdf |
 |         convert pdf         |                                 convert file.png -quality 0 file.pdf                                 |
+|  mettre à jour les paquets  |                                           sudo pacman -Syu                                           |
+|  gestionnaires des taches   |                           ctrl + esc -> accéssoires/gestionnaire de tâches                           |
 
 ## Keyboard shortcuts
 
-Super and type Keyboard
+|     action     |         shortcut         |
+|:--------------:|:------------------------:|
+| change desktop | ctrl + alt + right arrow |
